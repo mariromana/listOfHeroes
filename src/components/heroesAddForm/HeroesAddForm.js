@@ -1,7 +1,7 @@
 import {useHttp} from '../../hooks/http.hook';
 import {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { heroesCreated } from '../../actions';
+import { heroesCreated } from '../heroesList/heroesSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -12,7 +12,7 @@ const HeroesAddForm = () => {
     const [textHero, setTextHero] = useState('');
     const [elementHero, setElementHero] = useState('');
 
-    const {heroes, heroesLoadingStatus} = useSelector(state => state);
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -33,6 +33,25 @@ const HeroesAddForm = () => {
         setNameHero('');
         setTextHero('');
         setElementHero('');
+    }
+
+
+    const renderFilters = (filters, status) => {
+        if (status === "loading") {
+            return <option>Загрузка элементов</option>
+        } else if (status === "error") {
+            return <option>Ошибка загрузки</option>
+        }
+        
+        if (filters && filters.length > 0 ) {
+            return filters.map(({name, label}) => {
+
+                // eslint-disable-next-line
+                if (name === 'all')  return;
+
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
     }
 
 
@@ -75,10 +94,7 @@ const HeroesAddForm = () => {
                     value={elementHero}
                     onChange={(e) => setElementHero(e.target.value)}>
                     <option >I own the element...</option>
-                    <option value="fire">Fire</option>
-                    <option value="water">Water</option>
-                    <option value="wind">Air</option>
-                    <option value="earth">Land</option>
+                    {renderFilters(filters, filtersLoadingStatus)}
                 </select>
             </div>
 
