@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "id": "5e826cc7-90cd-4a1c-8a61-372696516cf1",
-      "name": "James",
-      "description": "Strong",
-      "element": "earth"
-    },
-    {
       "id": "3f18a6ca-2ec1-4c33-9160-39c78127cd41",
       "name": "alex",
       "description": "sss",
@@ -23,30 +17,41 @@
       "name": "ddd",
       "description": "ddd",
       "element": "earth"
+    },
+    {
+      "id": "45a99b5e-c319-4a2e-9777-d63d7b5d7944",
+      "name": "fff",
+      "description": "ff",
+      "element": "earth"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "All",
       "className": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Fire",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Water",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Wind",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Earth",
       "className": "btn-secondary"
